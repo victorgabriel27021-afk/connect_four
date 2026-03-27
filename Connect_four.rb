@@ -24,3 +24,20 @@ def drop_piece(col, piece)
 	  end
    end
 end
+
+board = Board.new
+players =["X", "O"]
+turn = 0
+
+loop do 
+	board.display
+	player = players[turn %2]
+	puts "Player #{player}, choose a column (0-6):"
+	col = gets.chomp.to_i
+
+	if board.drop_piece(col, player)
+		turn += 1
+	else
+		puts "Column full! Try Again."
+	end
+end
